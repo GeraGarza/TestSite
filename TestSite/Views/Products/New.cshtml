@@ -1,0 +1,47 @@
+﻿@model TestSite.ViewModels.ProductFormViewModel
+
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Product</h2>
+
+
+@using (Html.BeginForm("Save", "Products"))
+{
+
+<div class="form-group">
+
+
+
+    <!-- Name -->
+    @Html.LabelFor(p => p.Product.Name)
+
+    @Html.TextBoxFor(p => p.Product.Name, new { @class = "form-control" })
+
+
+
+    <!-- Date Added-->
+    @Html.LabelFor(p => p.Product.DateAdded)
+
+    @Html.TextBoxFor(p => p.Product.DateAdded, "{0:d MMM yyyy}", new { @class = "form-control" })
+
+
+    <!-- Select Product Type-->
+    @Html.LabelFor(p => p.Product.ProductTypeId)
+    @Html.DropDownListFor(p => p.Product.ProductTypeId, new SelectList(Model.ProductType, "Id", "Name"), "Select Product Type", new { @class = "form-control" })
+
+
+   
+
+
+
+</div>
+
+
+
+
+
+}

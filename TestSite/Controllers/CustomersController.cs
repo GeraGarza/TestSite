@@ -44,10 +44,26 @@ namespace TestSite.Controllers
 
 
         [HttpPost]      // make sure it can only be called using post and not get
-        public ActionResult Create(CustomerFormViewModel viewModel)
+        public ActionResult Save(CustomerFormViewModel viewModel)
         {
 
-            _context.Customers.Add(viewModel.Customer);
+            if (viewModel.Customer.Id == 0)
+                _context.Customers.Add(viewModel.Customer);
+            else{
+                var customerInDb = _context.Customers.Single(c => c.Id == viewModel.Customer.Id);
+
+                //TryUpdateModel(customerInDb) // not safe since user can change everything
+                //mapper.map(customer,customerinDb);
+
+                customerInDb.Name = viewModel.Customer.Name;
+                customerInDb.MembershipTypeId = viewModel.Customer.MembershipTypeId;
+                customerInDb.Id = viewModel.Customer.Id;
+                customerInDb.isMember = viewModel.Customer.isMember;
+
+
+            }
+
+
 
             _context.SaveChanges();
 

@@ -35,6 +35,23 @@ namespace TestSite.Controllers
             return Content("index = " + id);
         }
 
+        public ActionResult New()
+        {
+
+
+            var productTypes = _context.ProductType.ToList();
+
+            var viewModel = new ProductFormViewModel
+            {
+
+                ProductType = productTypes
+                
+
+            };
+
+            return View(viewModel);
+        }
+
 
         public ActionResult Index(int? pageIndex, string sortBy)
         {

@@ -31,6 +31,11 @@ namespace TestSite.Models
 
         public DbSet<MembershipType> MembershipType { get; set; }
 
+
+        public DbSet<ProductType> ProductType { get; set; }
+
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
