@@ -6,9 +6,10 @@ using TestSite.Models;
 
 namespace TestSite.ViewModels
 {
-    public class ProductsViewModel
+    public class AppsViewModel
     {
 
-        public List<Product> Products { get; set; }
+        public List<App> Apps { get; set; }
+
     }
 }

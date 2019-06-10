@@ -7,13 +7,13 @@ namespace TestSite.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class PopulateProducts : IMigrationMetadata
+    public sealed partial class UpdateApps : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateProducts));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateApps));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906101504545_PopulateProducts"; }
+            get { return "201906102310454_UpdateApps"; }
         }
         
         string IMigrationMetadata.Source

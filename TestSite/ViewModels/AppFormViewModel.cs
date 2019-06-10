@@ -6,11 +6,11 @@ using TestSite.Models;
 
 namespace TestSite.ViewModels
 {
-    public class ProductFormViewModel
+    public class AppFormViewModel
     {
-        public Product Product { get; set; }
-        public IEnumerable<ProductType> ProductType { get; set; }
 
+        public App App { get; set; }
+        public IEnumerable<AppType> AppTypes { get; set; }
 
 
     }

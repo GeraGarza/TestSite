@@ -7,13 +7,13 @@ namespace TestSite.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DeletedTiles : IMigrationMetadata
+    public sealed partial class CreatedApps : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DeletedTiles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreatedApps));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906101540463_DeletedTiles"; }
+            get { return "201906102301421_CreatedApps"; }
         }
         
         string IMigrationMetadata.Source

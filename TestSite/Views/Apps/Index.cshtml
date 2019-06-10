@@ -1,4 +1,5 @@
-﻿@model TestSite.ViewModels.ProductsViewModel
+﻿
+@model TestSite.ViewModels.AppsViewModel
 
 
 @{
@@ -6,12 +7,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Index</h2>
+
+
+
 <h2>Products</h2>
 
 
 
 
-@if (Model.Products.Count == 0)
+@if (Model.Apps.Count == 0)
 {
     <p> No Products</p>
 }
@@ -35,14 +40,14 @@ else
         <tbody>
 
 
-            @foreach (var products in Model.Products)
+            @foreach (var apps in Model.Apps)
             {
-            <tr>
-                <td>@Html.ActionLink(products.Name, "Details", "Products", new { id = products.Id }, null)</td>
-                <td>@products.ProductType.Id</td>>
-                <td>@products.ProductType.Name</td>>
+                <tr>
+                    <td>@Html.ActionLink(apps.Name, "Details", "Apps", new { id = apps.Id }, null)</td>
+                    <td>@apps.AppType.Id</td>>
+                    <td>@apps.AppType.Name</td>>
 
-            </tr>
+                </tr>
 
             }
 
@@ -52,8 +57,4 @@ else
     </table>
 
 }
-
-
-
-
 

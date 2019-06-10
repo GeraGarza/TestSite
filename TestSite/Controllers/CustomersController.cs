@@ -27,6 +27,8 @@ namespace TestSite.Controllers
         }
 
 
+
+
         public ActionResult New()
         {
 
@@ -41,6 +43,9 @@ namespace TestSite.Controllers
 
             return View("CustomerForm", viewModel);
         }
+
+
+
 
 
         [HttpPost]      // make sure it can only be called using post and not get

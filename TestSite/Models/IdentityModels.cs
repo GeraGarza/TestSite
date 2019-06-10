@@ -26,13 +26,18 @@ namespace TestSite.Models
 
         public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<Product> Products { get; set; }
 
+
+        public DbSet<App> Apps { get; set; }
 
         public DbSet<MembershipType> MembershipType { get; set; }
 
 
-        public DbSet<ProductType> ProductType { get; set; }
+        
+
+
+
+        public DbSet<AppType> AppType { get; set; }
 
 
 

@@ -1,6 +1,5 @@
 ﻿
-
-@model TestSite.Models.Product
+@model TestSite.Models.App
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,15 +9,11 @@
 
 
 
-
 <h2>@Model.Name</h2>
 
 
 
-<li>@Model.ProductType.Name</li>
+<li>@Model.AppType.Name</li>
 
-<li>@Model.ProductType.YearCreated</li>
-
-
-
+<li>@Model.AppType.YearCreated</li>
 
