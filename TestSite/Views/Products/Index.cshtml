@@ -1,0 +1,59 @@
+﻿@model TestSite.ViewModels.ProductsViewModel
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+
+
+
+
+@if (Model.Products.Count == 0)
+{
+    <p> No Products</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Products</th>
+                <th>Product's ID</th>
+                <th>Product's Name</th>
+
+
+
+            </tr>
+
+
+        </thead>
+
+
+        <tbody>
+
+
+            @foreach (var products in Model.Products)
+            {
+            <tr>
+                <td>@Html.ActionLink(products.Name, "Details", "Products", new { id = products.Id }, null)</td>
+                <td>@products.ProductType.Id</td>>
+                <td>@products.ProductType.Name</td>>
+
+            </tr>
+
+            }
+
+
+        </tbody>
+
+    </table>
+
+}
+
+
+
+
+
