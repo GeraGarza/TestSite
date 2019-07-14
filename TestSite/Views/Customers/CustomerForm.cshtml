@@ -1,45 +1,88 @@
-﻿@model TestSite.ViewModels.CustomerFormViewModel
+﻿@using System.Globalization;
+
+@model TestSite.ViewModels.CustomerFormViewModel
 
 @{
-    ViewBag.Title = "New";
+    var title = (Model.Customer == null) ? "New Customer" : "Edit Customer";
+    ViewBag.Title = @title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Customer</h2>
-
+<h2>@title</h2>
 
 
 @using (Html.BeginForm("Save", "Customers"))
 {
+
+
+
+    @Html.ValidationSummary(false, "Fix Errors")
+    <!-- Name -->
     <div class=" = " form-group">
-
-
-        <!-- Name -->
-
         @Html.LabelFor(m => m.Customer.Name)
 
         @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
-
-
-        <!-- Birthdate -->
-
-        @Html.LabelFor(m => m.Customer.Birthdate)
-
-        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
-
-
-
-
-        <!-- Select Membership Type -->
-
-
+        @Html.ValidationMessageFor(m => m.Customer.Name)
+    </div>
+    <!-- Select Membership Type -->
+    <div class=" = " form-group">
         @Html.LabelFor(m => m.Customer.MembershipTypeId)
 
-        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipType, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
 
 
-        <!-- is Member -->
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipType, "Id", "Name"), "Select Custmer Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
+    </div>
 
+    <!-- Birthdate -->
+
+
+    string dateString = (Model.Customer.Birthdate.ToString().Contains("12:00:00 AM")) ? Model.Customer.Birthdate.ToString() : null;
+    string OriginalDate = dateString;
+    string dateStringCopy = dateString;
+    string year;
+    string day;
+    string month;
+
+    //    HAVE: 2/3/1998 12:00:00 AM
+
+
+    if (!String.IsNullOrWhiteSpace(dateString))
+    {
+        int char_one_Location = dateString.IndexOf("/", StringComparison.Ordinal);
+        string DropDay = dateString.Substring(char_one_Location + 1, 8);
+        int char_two_Location = DropDay.IndexOf("/", StringComparison.Ordinal);
+
+        month = dateString.Substring(0, char_one_Location);
+        if (month.Length == 1) { month = "0" + month; };
+        day = DropDay.Substring(0, char_two_Location);
+        if (day.Length == 1) { day = "0" + day; };
+        year = DropDay.Substring(char_two_Location + 1, char_two_Location + 3);
+        if (year.Length > 4) { year = year.Substring(0, 4); };
+        dateString = year + "-" + month + "-" + day;
+
+    }
+
+
+
+
+    //    WANT: 1998-02-03
+
+    System.Diagnostics.Debug.WriteLine(dateString);
+
+    <div class="form-group">
+        <label>Birth Dates : </label>
+        <input class="form-control"  value=@dateString data-val="true" id="Customer_Birthdate" name="Customer.Birthdate" type="date" />
+    </div>
+
+   
+
+
+
+
+
+    <!-- is Member -->
+    <div class=" = " form-group">
         <div class="checkbox">
             <label>
                 @Html.CheckBoxFor(m => m.Customer.isMember) Become Member
@@ -55,4 +98,6 @@
 
 
 
+
 }
+

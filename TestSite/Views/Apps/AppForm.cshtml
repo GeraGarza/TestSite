@@ -1,0 +1,67 @@
+﻿@model TestSite.ViewModels.AppFormViewModel
+
+
+@{
+    /**/
+
+    var title = (Model.App == null) ? "New App" : "Edit App";
+    ViewBag.Title = @title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>@title</h2>
+
+
+
+
+@using (Html.BeginForm("Save", "Apps"))
+{
+    @Html.ValidationSummary("Fix Errors")
+
+    <div class="form-group">
+
+
+
+        <!-- Name -->
+        @Html.LabelFor(p => p.App.Name)
+
+        @Html.TextBoxFor(p => p.App.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.App.Name)
+    </div>
+
+    <!-- App Owner -->
+    <div class="form-group">
+        @Html.LabelFor(p => p.App.AppOwner)
+
+        @Html.TextBoxFor(p => p.App.AppOwner, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.App.AppOwner)
+
+    </div>
+
+    <!-- App Type -->
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.App.AppTypeId)
+
+        @Html.DropDownListFor(m => m.App.AppTypeId, new SelectList(Model.AppTypes, "Id", "Name"), "Select App Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.App.AppTypeId)
+    </div>
+
+    <!-- has Restriction -->
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                @Html.CheckBoxFor(m => m.App.AppType.Restriction) Restriction
+            </label>
+        </div>
+
+    </div>
+
+    @Html.HiddenFor(m => m.App.Id)
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+
+}

@@ -215,6 +215,14 @@
     <Compile Include="Migrations\201906102310454_UpdateApps.Designer.cs">
       <DependentUpon>201906102310454_UpdateApps.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906112141045_addedConstraintToNameApp.cs" />
+    <Compile Include="Migrations\201906112141045_addedConstraintToNameApp.Designer.cs">
+      <DependentUpon>201906112141045_addedConstraintToNameApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906131522229_FixedPayAsYouGo.cs" />
+    <Compile Include="Migrations\201906131522229_FixedPayAsYouGo.Designer.cs">
+      <DependentUpon>201906131522229_FixedPayAsYouGo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\App.cs" />
@@ -223,6 +231,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AppFormViewModel.cs" />
@@ -292,7 +301,7 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Apps\Details.cshtml" />
     <Content Include="Views\Apps\Index.cshtml" />
-    <Content Include="Views\Apps\New.cshtml" />
+    <Content Include="Views\Apps\AppForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -340,6 +349,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906102310454_UpdateApps.resx">
       <DependentUpon>201906102310454_UpdateApps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906112141045_addedConstraintToNameApp.resx">
+      <DependentUpon>201906112141045_addedConstraintToNameApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906131522229_FixedPayAsYouGo.resx">
+      <DependentUpon>201906131522229_FixedPayAsYouGo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

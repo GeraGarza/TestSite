@@ -37,7 +37,8 @@ namespace TestSite.Controllers
 
             var viewModel = new CustomerFormViewModel
             {
-
+                Customer = new Customer(),
+                
                 MembershipType = membershipTypes
         };
 
@@ -52,9 +53,29 @@ namespace TestSite.Controllers
         public ActionResult Save(CustomerFormViewModel viewModel)
         {
 
+
+            if (!ModelState.IsValid)
+            {
+                var vm = new CustomerFormViewModel
+                {
+                    Customer = viewModel.Customer,
+                    MembershipType = _context.MembershipType.ToList()
+
+                };
+                return View("CustomerForm", vm);
+            }
+
+
+
             if (viewModel.Customer.Id == 0)
+            {
+
+                viewModel.Customer.MembershipType = _context.MembershipType.FirstOrDefault(x => x.Id == viewModel.Customer.MembershipTypeId); ;
                 _context.Customers.Add(viewModel.Customer);
-            else{
+
+            }
+            else
+            {
                 var customerInDb = _context.Customers.Single(c => c.Id == viewModel.Customer.Id);
 
                 //TryUpdateModel(customerInDb) // not safe since user can change everything
@@ -62,8 +83,10 @@ namespace TestSite.Controllers
 
                 customerInDb.Name = viewModel.Customer.Name;
                 customerInDb.MembershipTypeId = viewModel.Customer.MembershipTypeId;
+                customerInDb.Birthdate = viewModel.Customer.Birthdate;
                 customerInDb.Id = viewModel.Customer.Id;
                 customerInDb.isMember = viewModel.Customer.isMember;
+
 
 
             }

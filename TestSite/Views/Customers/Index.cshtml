@@ -8,12 +8,18 @@
 
 <h2>Customers</h2>
 
+
+@Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary", @style = "vertical-align:middle" })
+
+
+
+
 @if (Model.Customers.Count == 0)
 {
     <p> No Customers</p>
 }
 else
-{ 
+{
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -27,22 +33,22 @@ else
 
 
         <tbody>
-        
-             
-                @foreach (var customers in Model.Customers)
-                {
-                    <tr>
-                      <td>@Html.ActionLink(customers.Name, "Edit", "Customers", new { id = customers.Id }, null)</td>
-                      <td>@customers.MembershipType.Name</td>
 
-                    </tr>
 
-                }
+            @foreach (var customers in Model.Customers)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customers.Name, "Edit", "Customers", new { id = customers.Id }, null)</td>
+                    <td>@customers.MembershipType.Name</td>
+
+                </tr>
+
+            }
 
 
         </tbody>
 
     </table>
 
-  
+
 }

@@ -17,5 +17,8 @@ namespace TestSite.Models
 
 
 
+        public static readonly byte Unknown = 0;
+        public static readonly byte PayAsYouGo = 1;
+
     }
 }

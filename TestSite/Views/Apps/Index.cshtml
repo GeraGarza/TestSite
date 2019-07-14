@@ -7,11 +7,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
 
 
-<h2>Products</h2>
+
+
+    @Html.ActionLink("New App", "New", "Apps", null, new { @class = "btn btn-primary", @style = "vertical-align:middle" })
+
 
 
 
@@ -22,6 +24,8 @@
 }
 else
 {
+
+
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -43,7 +47,7 @@ else
             @foreach (var apps in Model.Apps)
             {
                 <tr>
-                    <td>@Html.ActionLink(apps.Name, "Details", "Apps", new { id = apps.Id }, null)</td>
+                    <td>@Html.ActionLink(apps.Name, "Edit", "Apps", new { id = apps.Id }, null)</td>
                     <td>@apps.AppType.Id</td>>
                     <td>@apps.AppType.Name</td>>
 

@@ -32,11 +32,6 @@ namespace TestSite.Models
 
         public DbSet<MembershipType> MembershipType { get; set; }
 
-
-        
-
-
-
         public DbSet<AppType> AppType { get; set; }
 
 
